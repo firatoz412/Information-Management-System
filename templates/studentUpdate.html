@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Güncelle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            border: 2px solid #000;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        .backToList {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .updateButton {
+            display: block;
+            margin: 20px auto 0 auto;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        form input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            border: 2px solid black;
+            border-radius: 6px;
+        }
+        form {
+            width: 350px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Öğrenci Güncelle</h1>
+    <form method="POST" action="{{ url_for('studentUpdate', id=student.id) }}">
+        <label>Ad:</label><br>
+        <input type="text" name="studentName" value="{{ student.studentName }}" required><br>
+
+        <label>Soyad:</label><br>
+        <input type="text" name="studentSurename" value="{{ student.studentSurename }}" required><br>
+
+        <label>Öğrenci No:</label><br>
+        <input type="text" name="studentNo" value="{{ student.studentNo }}" required><br>
+
+        <label>Cinsiyeti:</label><br>
+        <input type="text" name="gender" value="{{ student.gender }}" required><br>
+
+        <label>Öğrenci Bölümü:</label><br>
+        <input type="text" name="departments" value="{{ student.departments }}" required><br>
+
+        <label>Şehir:</label><br>
+        <input type="text" name="city" value="" required><br>
+
+        <label>Açıklama:</label><br>
+        <input type="text" name="comment" value=""><br>
+
+        <button class="updateButton" type="submit">Güncelle</button>
+    </form>
+    <br>
+    <a class="backToList" href="{{ url_for('students') }}">Listeye Dön</a>
+</body>
+</html>

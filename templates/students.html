@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenciler</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container{
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header{
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        h2{
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .table-wrapper{
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th{
+            background:#667eea 0%;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f8f9ff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: block;
+            padding: 20px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background:#0e8bc9 100%;
+            color: white;
+        }
+        .btn-danger {
+            background:#d0374c;
+            color: white;
+        }
+      
+        @media (max-width: 768px) {
+            .table-wrapper {
+                overflow-x: auto;
+            }
+
+            table{
+                min-width: 800px;
+            }
+
+            h2{
+                font-size: 28px;
+            }
+
+            .btn{
+                font-size: 16px;
+                padding: 15px 20px;
+            }
+        }
+
+        .idColor{
+                color:rgb(0, 4, 112);
+                font-weight: 700;
+        }
+        .baslik{
+            font-weight: 700;
+            font-size:16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Öğrenci Listesi</h2>
+            <p class="subtitle">Sistemde kayıtlı olan öğrenciler listesi</p>
+        </header>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="baslik">ID</th>
+                        <th class="baslik">Adı</th>
+                        <th class="baslik">Soyadı</th>
+                        <th class="baslik">Okul No</th>
+                        <th class="baslik">Cinsiyet</th>
+                        <th class="baslik">Bölüm</th>
+                        <th class="baslik">Şehir</th>
+                        <th class="baslik" >Açıklama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td >{{ student["id"] }}</td>
+                        <td>{{ student["studentName"] }}</td>
+                        <td>{{ student["studentSurename"] }}</td>
+                        <td>{{ student["studentNo"] }}</td>
+                        <td>{{ student["gender"] }}</td>
+                        <td>{{ student["departments"] }}</td>
+                        <td>{{ student["city"] }}</td>
+                        <td>{{ student["comment"] if student["comment"] else "Açıklama Yok" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-buttons">
+            <a class="btn btn-primary" href="/addStudent">
+                Öğrenci Ekle
+            </a>
+            <a class="btn btn-danger" href="/deleteStudent">
+                Öğrenci Sil
+            </a>
+        </div>
+    </div>
+</body>
+</html>

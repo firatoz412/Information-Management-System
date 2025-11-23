@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bu sayfadan öğrencilere not verebilirsiniz.</title>
+
+    <style>
+        .baslik{
+            text-align: center;
+            border:5px solid black;
+            border-radius: 3px;
+            font-size: 32px;
+            color:brown;
+            line-height:74px;
+        }
+
+        .div1{
+            text-align: center;;
+            font-size: 16px;
+            color:rgb(0, 0, 0);
+        }
+        .div2{
+            text-align: center;
+            font-size: 16px;
+            color:rgb(0, 0, 0);
+        }
+        .div3{
+            text-align: center;
+            font-size:16x;
+            color:rgb(0, 0, 0);
+        }
+
+        .btn{
+            text-align: center;
+            font-size:16x;
+            color:rgb(0, 0, 0);
+        }
+
+        .flash-messages {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .flash-messages .error {
+            background-color: #ffb3b3;
+            color: #660000;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .flash-messages .success {
+            background-color: #b3ffb3;
+            color: #004d00;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .flash-messages .warning {
+            background-color: #fff3b3;
+            color: #665c00;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+
+    </style>
+
+    <script>
+        setTimeout(() => {
+            const messages = document.querySelectorAll('.flash-messages div');
+            messages.forEach(msg => msg.style.display = 'none');
+        }, 5000);
+    </script>
+
+
+
+</head>
+<body>
+    <h3 class="baslik" >Öğrenciye Not Ekleme</h3>
+    
+    <form action="{{url_for('addGrade')}}" method="post">
+
+        <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true,category_filter=None) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
+        <div class="div1">
+                <label>Öğrenci ID:</label><br>
+                <input type="text" name="student_id" required placeholder="Öğrenci ID'sini giriniz:">
+            </div>
+
+            <div class="div2">
+                <label>Ders Adı:</label><br>
+                <input type="text" name="course" required placeholder="Not gireceğiniz dersin adı:">
+            </div>
+            
+            <div class="div3">
+                <label>Not:</label><br>
+                <input type="text" name="grade" required placeholder="Notu giriniz:">
+            </div>
+
+            <div class="btn">
+                <button  type="submit">NOT EKLE</button>
+            </div>
+    </form>
+</body>
+</html>

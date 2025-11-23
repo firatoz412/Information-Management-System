@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Ekle</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1ac98cff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .yazi1 {
+            background: #fff;
+            border-radius: 10px;
+            text-align: center;
+            padding: 15px 30px;
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #ccc;
+        }
+
+        .message {
+            color: #c00;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #fbeaea;
+            border-radius: 6px;
+            border-left: 4px solid #c00;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .submit-btn,
+        .submit-btn2 {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="yazi1">Öğrenci Ekleme Formu</h2>
+
+    <div class="form-container">
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        <form action="{{ url_for('addStudent') }}" method="POST">
+
+            <div class="form-group">
+                <label>Ad:</label>
+                <input type="text" name="studentName" required placeholder="Adını giriniz">
+            </div>
+            
+            <div class="form-group">
+                <label>Soyad:</label>
+                <input type="text" name="studentSurename" required placeholder="Soyadını giriniz">
+            </div>
+
+            <div class="form-group">
+                <label>Numara:</label>
+                <input type="number" name="studentNo" required placeholder="Öğrenci numarasını giriniz">
+            </div>
+
+            <div class="form-group">
+                <label>Cinsiyet:</label>
+                <input type="text" name="gender" required placeholder="Öğrencinin cinsiyetini giriniz">
+            </div>
+
+            <div class="form-group">
+                <label>Bölüm:</label>
+                <input type="text" name="departments" required placeholder="Öğrencinin bölümünü giriniz">
+            </div>
+
+            <div class="form-group">
+                <label>Şehir:</label>
+                <input type="text" name="city" required placeholder="Öğrencinin geldiği şehir">
+            </div>
+
+            <div class="form-group">
+                <label>Tercih Sebebi:</label>
+                <input type="text" name="comment" placeholder="Açıklama (isteğe bağlı)">
+            </div>
+
+            <button type="submit" class="submit-btn">EKLE</button>
+            <button type="button" class="submit-btn2" onclick="window.location.href='{{ url_for('index') }}'">Ana Sayfaya Dön</button>
+        </form>
+    </div>
+</body>
+</html>

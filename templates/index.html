@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilgi Yönetim Sistemi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        ::selection {
+            background: rgb(196, 9, 9);
+            color: white;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .yazi1 {
+            text-align: center;
+            border: 5px solid black;
+            border-radius: 7px;
+            font-size: 50px;
+            color: cadetblue;
+            line-height: 100px;
+            position: relative;
+        }
+
+        .logout {
+            position:absolute;
+            right: 20px;
+            top: -15px;
+            padding-bottom: 20px;
+        }
+
+        .logout a{
+            text-decoration: none;
+            color: white;
+            background-color: crimson;
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            font-size: 18px;
+        }
+        .silmeLinki, .eklemeLinki, .listelemeLinki, .aramaLinki {
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.18s ease;
+            transform-origin: center;
+        }
+
+        .silmeLinki { color: red; }
+        .eklemeLinki { color: blue; }
+        .listelemeLinki { color: black; }
+        .aramaLinki { color: black; }
+
+        .silmeLinki:hover,
+        .eklemeLinki:hover,
+        .listelemeLinki:hover,
+        .aramaLinki:hover{
+            transform: scale(1.5);
+        }
+
+        .sil, .ekle, .listele, .ara {
+            font-size: 30px;
+        }
+
+        .ortabar {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 class="yazi1">
+            Bilgi Yönetim Sistemi
+            <span class="logout">
+                <a href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap</a>
+            </span>
+        </h1>
+    </div>
+
+    <div class="ortabar">
+
+        <div class="ekle">
+            öğrenci eklemek için tıklayın: 
+            <a class="eklemeLinki" href="{{url_for('addStudent')}}">
+                <i class="fa-solid fa-user-plus"></i>
+            </a>
+        </div>
+
+        <br>
+
+        <div class="sil">
+            öğrenci silmek için tıklayın: 
+            <a class="silmeLinki" href="{{url_for('deleteStudent')}}">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+        </div>
+
+        <br>
+
+        <div class="listele">
+            öğrenci listelemek için tıklayın: 
+            <a class="listelemeLinki" href="{{url_for('students')}}">
+                <i class="fa-solid fa-list-ul"></i>
+            </a>
+        </div>
+
+        <br>
+
+        <div class="ara">
+            öğrenci aramak için tıklayın: 
+            <a class="aramaLinki" href="{{url_for('studentSearch')}}">
+                🔍
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>

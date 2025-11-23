@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Detay</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=undo" />
+    <style>
+        .yazi{
+            text-align: center;
+        }
+
+        .info{
+            border:5px solid rgb(0, 0, 0);
+            text-align: center;
+
+        }
+
+        .info p{
+            font-size: 20px;
+        }
+
+        .link{
+            margin-top:10px;
+            text-align: center;
+            border-bottom:5px solid red;
+            padding-bottom:7px;
+        }
+
+        a{
+            text-decoration: none;
+            font-size:25px;
+            color:black;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-style:oblique;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1 class="yazi">Öğrenci Detayları:</h1>
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% else %}
+         <div class="info">
+            <b>
+                <p><i>Öğrenci ID: {{ student.id }}</i></p>
+                <p><i>Öğrenci Adı: {{ student.studentName }}</i></p>
+                <p><i>Öğrenci Soyadı: {{ student.studentSurename }}</i></p>
+                <p><i>Öğrenci Numarası: {{ student.studentNo }}</i></p>
+                <p><i>Öğrenci Cinsiyeti: {{ student.gender }}</i></p>
+                <p><i>Öğrenci Bölümü: {{ student.departments }}</i></p>
+                <p><i>Öğrencinin Geldiği Şehir: {{ student.city }}</i></p>
+                <p><i>Öğrenci Yerleşme Nedeni: {{ student.reason }}</i></p>
+            </b>
+        </div><br>
+    {% endif %}
+
+<div class="link">
+    
+    <a href="{{ url_for('students') }}">
+    <span class="material-symbols-outlined" style="font-size:24px; vertical-align:middle;">
+        undo
+    </span>
+        Öğrenci Listesi
+    </a>
+</div>
+
+<div class="link">
+    
+    <a href="{{ url_for('studentSearch') }}">
+    <span class="material-symbols-outlined" style="font-size:24px; vertical-align:middle;">
+        undo
+    </span>
+       Öğrenci Arama
+    </a>
+</div>
+
+
+</body>
+</html>
