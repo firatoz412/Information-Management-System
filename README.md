@@ -24,6 +24,7 @@
    http://127.0.0.1:5000/student?format=json
 
 
+
 ->sadece bir öğrencinin bilgilerini görmek istiyorsanız tarayıcıya şunu yazın:
 http://127.0.0.1:5000/studentInfo/öğrenci id'si
 
@@ -38,7 +39,6 @@ example:
    Back-end:Python,Flask
    front-end:Html,Css
    Veritabanı: MySql
-   Template Engine:Jinja2
 
 +ekstra olarak mysql-connector kütüphanesinin Error sınıfını ve dekoratör kullandık.
 
@@ -55,8 +55,8 @@ student-management-system/
       studentUpdate.html
       studentSearch.html
       addGrade.html
-   .env                  #env dosyası
-   README.md             #bu dosya
+   .env
+   README.md
 
 ->app.py'yle aynı dizinde bir .env dosyası oluşturun:
    DB_HOST=127.0.0.1
